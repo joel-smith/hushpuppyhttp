@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var fs = require('fs');
+
+var configObj = require('./config.json');
+const MongoClient = require('mongodb').MongoClient
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,8 +42,23 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+
+
 //allow access to public folder
 app.use('/static', express.static(path.join(__dirname, 'public')));
+
+
+//database access
+
+
+
+const credentials = fs.readFileSync(configObj.dbcert);
+
+const client = new MongoClient(configObj.dbconnstr, {
+  sslKey: credentials,
+  sslCert: credentials
+});
 
 app.get('/', function (req, res) {
   res.send('Hello World!');

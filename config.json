@@ -1,0 +1,4 @@
+{
+    "dbconnstr": "mongodb+srv://imagecluster0.ko1nj.mongodb.net/storage?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority",
+    "dbcert": "X509-cert-2778982789925497865.pem"
+}
