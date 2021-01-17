@@ -6,7 +6,15 @@ var logger = require('morgan');
 var fs = require('fs');
 
 var configObj = require('./config.json');
-const MongoClient = require('mongodb').MongoClient
+
+
+// const db = monk(configObj.dbconnstr_pw);
+
+// db.then(() => {
+//   console.log('Connected correctly to server')
+// })
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -49,16 +57,7 @@ app.use(function(err, req, res, next) {
 app.use('/static', express.static(path.join(__dirname, 'public')));
 //app.use(express.static('public'));
 
-//database access
 
-
-
-const credentials = fs.readFileSync(configObj.dbcert);
-
-const client = new MongoClient(configObj.dbconnstr, {
-  sslKey: credentials,
-  sslCert: credentials
-});
 
 // app.get('/', function (req, res) {
 //   res.send('Hello World!');
