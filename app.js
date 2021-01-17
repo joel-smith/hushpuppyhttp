@@ -47,7 +47,7 @@ app.use(function(err, req, res, next) {
 
 //allow access to public folder
 app.use('/static', express.static(path.join(__dirname, 'public')));
-
+//app.use(express.static('public'));
 
 //database access
 
@@ -60,8 +60,10 @@ const client = new MongoClient(configObj.dbconnstr, {
   sslCert: credentials
 });
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-})
+// app.get('/', function (req, res) {
+//   res.send('Hello World!');
+// })
+
+
 
 module.exports = app;
